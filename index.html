@@ -3528,29 +3528,14 @@ Then click Import from paste" rows="4" style="width:100%;margin-top:0.35rem;padd
 
         var openEmbedBtn = document.getElementById("openEmbed");
         if (openEmbedBtn) openEmbedBtn.addEventListener("click", function () {
-            const siteURL = "https://rollrng.wixsite.com/roll/home";
             try {
-                const popup = window.open("about:blank", "_blank", "width=800,height=600");
+                var popup = window.open("Prize.html", "_blank", "width=800,height=600");
                 if (!popup) {
                     alert("Popup blocked! Please allow popups for this site.");
-                    return;
                 }
-                popup.document.write(`
-                    <!DOCTYPE html>
-                    <html>
-                    <head><title>Embedded Site</title>
-                    <style>body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-                    iframe { border: none; width: 100%; height: 100%; }</style>
-                    </head>
-                    <body>
-                        <iframe src="${siteURL}" allowfullscreen></iframe>
-                    </body>
-                    </html>
-                `);
-                popup.document.close();
             } catch (err) {
-                console.error("Error embedding site:", err);
-                alert("Could not embed the site. It may block iframe embedding.");
+                console.error("Error opening prize site:", err);
+                alert("Could not open the prize site.");
             }
         });
 
