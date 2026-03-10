@@ -3553,31 +3553,13 @@ Then click Import from paste" rows="4" style="width:100%;margin-top:0.35rem;padd
                 alert("Could not embed the site. It may block iframe embedding.");
             }
         });
-
         var openSoundboardBtn = document.getElementById("openSoundboard");
         if (openSoundboardBtn) openSoundboardBtn.addEventListener("click", function () {
             try {
-                var popup = window.open("about:blank", "_blank", "width=900,height=600");
+                var popup = window.open("soundboard.html", "_blank", "width=900,height=600");
                 if (!popup) {
                     alert("Popup blocked! Please allow popups for this site.");
-                    return;
                 }
-                var sc = "</scr" + "ipt>";
-                popup.document.write(
-                    "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<base href=\"https://cdn.jsdelivr.net/gh/genizy/soundboard@main/\">\n" +
-                    "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521219086088837\" crossorigin=\"anonymous\">" + sc + "\n" +
-                    "<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-\">" + sc + "\n\n" +
-                    "<meta charset=\"UTF-8\">\n<title>Soundboard</title>\n" +
-                    "<script src=\"sounds.js\" type=\"module\">" + sc + "\n" +
-                    "<script src=\"main.js\" type=\"module\">" + sc + "\n" +
-                    "<link href=\"style.css\" rel=\"stylesheet\">\n</head>\n<body>\n" +
-                    "<div id=\"controls\">\n<button id=\"toggleFavorites\" class=\"control-button favorites-toggle\">⭐ Favorites: OFF</button>\n" +
-                    "<button id=\"toggleButton\" class=\"control-button overlap-toggle\">🔇 Overlap: OFF</button>\n" +
-                    "<button id=\"stopButton\" class=\"control-button stop-button\">⏹️ Stop All Sounds</button>\n" +
-                    "<input id=\"searchInput\" type=\"text\" placeholder=\"Search sounds...\">\n</div>\n" +
-                    "<div id=\"soundboard\"></div>\n</body>\n</html>"
-                );
-                popup.document.close();
             } catch (err) {
                 console.error("Error opening soundboard:", err);
                 alert("Could not open soundboard.");
@@ -3585,6 +3567,7 @@ Then click Import from paste" rows="4" style="width:100%;margin-top:0.35rem;padd
         });
 
         function init() {
+
             const now = Date.now();
             const boostEnd = getBoostEndTime();
             const cooldownEnd = getCooldownEndTime();
